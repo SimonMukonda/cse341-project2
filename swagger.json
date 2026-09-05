@@ -5,10 +5,10 @@
     "description": "CRUD API for cataloging developer APIs - CSE 341 Project 2",
     "version": "1.0.0"
   },
-  "host": "localhost:3002",
+  "host": "cse341-project2-nw1s.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
