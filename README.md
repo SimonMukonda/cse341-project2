@@ -14,6 +14,18 @@ Each document has these fields:
 - `rateLimit`
 - `description`
 
+## Collection: `developers`
+
+Each document has these fields:
+- `name`
+- `email`
+- `company`
+- `country`
+- `yearsExperience`
+- `specialty`
+- `bio`
+- `joinedDate`
+
 ## Setup
 
 1. Install dependencies:
@@ -56,6 +68,11 @@ Each document has these fields:
 | POST   | /apidev            | Create a new API entry       |
 | PUT    | /apidev/:id        | Update an existing API entry |
 | DELETE | /apidev/:id        | Delete an API entry          |
+| GET    | /developers        | Get all developers           |
+| GET    | /developers/:id    | Get a single developer       |
+| POST   | /developers        | Create a new developer       |
+| PUT    | /developers/:id    | Update an existing developer |
+| DELETE | /developers/:id    | Delete a developer           |
 
 All routes include validation (all 8 fields required, must be non-empty strings) and error handling (400 for bad input, 404 for not found, 500 for server errors).
 
