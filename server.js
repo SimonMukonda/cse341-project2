@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const passport = require('./config/passport');
 const mongodb = require('./data/database');
 const app = express();
 
@@ -9,6 +11,18 @@ const port = process.env.PORT || 3002;
 app.set('json spaces', 2);
 
 app.use(bodyParser.json());
+
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false
+    })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(

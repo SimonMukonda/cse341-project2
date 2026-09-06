@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const developersController = require('../controllers/developersController');
+const isAuthenticated = require('../middleware/isAuthenticated');
 
 // #swagger.tags = ['Developers']
 router.get('/', developersController.getAll);
@@ -8,12 +9,15 @@ router.get('/', developersController.getAll);
 router.get('/:id', developersController.getSingle);
 
 // #swagger.tags = ['Developers']
-router.post('/', developersController.createDeveloper);
+// #swagger.security = [{ "githubOAuth": [] }]
+router.post('/', isAuthenticated, developersController.createDeveloper);
 
 // #swagger.tags = ['Developers']
-router.put('/:id', developersController.updateDeveloper);
+// #swagger.security = [{ "githubOAuth": [] }]
+router.put('/:id', isAuthenticated, developersController.updateDeveloper);
 
 // #swagger.tags = ['Developers']
-router.delete('/:id', developersController.deleteDeveloper);
+// #swagger.security = [{ "githubOAuth": [] }]
+router.delete('/:id', isAuthenticated, developersController.deleteDeveloper);
 
 module.exports = router;
